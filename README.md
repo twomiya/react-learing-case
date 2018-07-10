@@ -103,7 +103,33 @@ TodoItem.defaultProps={
 
 ```
 
+**11，prop state render的关系**
+
+* 当组件state或prop发生变化时，render函数就会重新运行
+* 当父组件的render函数运行时，它的子组件都将被重新运行一次
+
+**12，react的虚拟DOM**
+
+##就是一个js对象，为了提高性能。本质是
+
+* 1，state 数据
+* 2，JSX 模版
+* 3，模版+数据 生成真实的DOM，来显示
+
+`<div id="abc"><span>hello react</span></div>`
+
+* 4，生成虚拟DOM(虚拟DOM就是一个JS对象，用它来描述真实的DOM) （损耗了性能）(虽然损耗了性能，但是相比真实DOM损耗的很少)
+
+`['div',{id:"abc"},['span',{},'hello react']]`
+* 5，state发生变化
+* 6，数据+模版生成新的虚拟DOM （极大的提升了性能）
+
+`['div',{id:"abc"},['span',{},'hello react']]`
+
+* 7，比较原始的虚拟DOM和新的虚拟DOM的区别，差异是`span`的内容 （极大的提升了性能）
+* 8，直接操作DOM，改变`span`的内容
 
 
 
 
+ 
