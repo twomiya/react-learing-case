@@ -310,7 +310,7 @@ TodoItem.defaultProps={
   const action = getInputChangeAciton(value)
   ```
 
-  ###### redux使用基本原则
+  #### redux使用基本原则
 
   *   store 是唯一的
 
