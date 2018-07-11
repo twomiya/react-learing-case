@@ -307,7 +307,9 @@ TodoItem.defaultProps={
   * 替换
 
   ```
+  ...
   const action = getInputChangeAciton(value)
+  ...
   ```
 
   #### redux使用基本原则
