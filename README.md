@@ -8,6 +8,7 @@
 `App.test.js`自动化测试文件
 
 `manifest.json` pwa配置文件 可以访问图标快捷方式
+<hr>
 
 **2，PWA progressive web application**
 **写网页的形式写手机app 断网的时候第二次访问也可以看到第一次访问的页面**
@@ -110,7 +111,7 @@ TodoItem.defaultProps={
 
 **12，react的虚拟DOM（同层比对）**
 
->## 就是一个js对象，为了提高性能。本质是
+>###### 就是一个js对象，为了提高性能。本质是
 
 * 1，state 数据
 * 2，JSX 模版
