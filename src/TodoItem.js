@@ -11,6 +11,12 @@ class TodoItem extends Component{
         deleteItem(index)
         // this.props.deleteItem(this.props.index)
     }
+    componentWillReceiveProps(){
+        console.log('componentWillReceiveProps')
+    }
+    componentWillUnmount(){
+        console.log('componentWillUnmount')
+    }
     render(){
         const {content,test} = this.props
         return(
