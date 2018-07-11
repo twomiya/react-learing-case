@@ -27,7 +27,9 @@ class TodoList extends Component{
         this.setState((prevState)=>({
             list:[...prevState.list,prevState.inputValue],
             inputValue:''
-        }))
+        }),()=>{
+            console.log(this.ul.querySelectorAll('div').length)
+        })
         // this.setState({
         //     list:[...this.state.list,this.state.inputValue],
         //     inputValue:''
@@ -56,7 +58,7 @@ class TodoList extends Component{
              //    <div>
              //        <li >
                      <TodoItem 
-                         key={index}
+                         key={item}
                          content={item}
                          index={index}
                          deleteItem={this.onItemDelete}/>
@@ -74,7 +76,7 @@ class TodoList extends Component{
                     <input  className="input" value={this.state.inputValue}  onChange={this.handleInputChange} />
                     <button onClick={this.handleBtnClick}>确定</button>
                 </div>
-                <ul>
+                <ul ref={(ul)=>this.ul=ul}>
                    {this.getTodoItem()}
                 </ul>
             </Fragment>

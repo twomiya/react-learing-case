@@ -108,19 +108,21 @@ TodoItem.defaultProps={
 * 当组件state或prop发生变化时，render函数就会重新运行
 * 当父组件的render函数运行时，它的子组件都将被重新运行一次
 
-**12，react的虚拟DOM**
+**12，react的虚拟DOM（同层比对）**
 
 ##就是一个js对象，为了提高性能。本质是
 
 * 1，state 数据
 * 2，JSX 模版
-* 3，模版+数据 生成真实的DOM，来显示
+* 3，模版+数据 生成虚拟DOM(虚拟DOM就是一个JS对象，用它来描述真实的DOM) （损耗了性能）(虽然损耗了性能，但是相比真实DOM损耗的很少)
+
+
+`['div',{id:"abc"},['span',{},'hello react']]`
+
+* 4，用虚拟DOM的结构生成真实的DOM，来显示
 
 `<div id="abc"><span>hello react</span></div>`
 
-* 4，生成虚拟DOM(虚拟DOM就是一个JS对象，用它来描述真实的DOM) （损耗了性能）(虽然损耗了性能，但是相比真实DOM损耗的很少)
-
-`['div',{id:"abc"},['span',{},'hello react']]`
 * 5，state发生变化
 * 6，数据+模版生成新的虚拟DOM （极大的提升了性能）
 
@@ -129,6 +131,13 @@ TodoItem.defaultProps={
 * 7，比较原始的虚拟DOM和新的虚拟DOM的区别，差异是`span`的内容 （极大的提升了性能）
 * 8，直接操作DOM，改变`span`的内容
 
+#####key提高了虚拟对比的性能，所以不能用index设置key值
+
+**13，react中ref的使用**
+
+`ref` 属性来帮助我们获取已经挂载的元素的 DOM 节点
+我们可以给任意代表 HTML 元素标签加上 ref 从而获取到它 DOM 元素然后调用 DOM API。**但是记住一个原则：能不用 ref 就不用。**
+特别是要避免用 ref 来做 React.js 本来就可以帮助你做到的页面自动更新的操作和事件监听。多余的 DOM 操作其实是代码里面的“噪音”，不利于我们理解和维护。
 
 
 
