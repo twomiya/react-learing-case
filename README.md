@@ -213,4 +213,34 @@ TodoItem.defaultProps={
   **16,react-transition-group**
 
   **17,Redux=Reducer+Flux**
+  
+  * `yarn add redux` 安装redux
+
+  * Store的创建
+
+  在src创建store/index.js
+
+  ```
+    import {createStore} from 'redux';
+    import reducer from './reducer'
+    const stroe = createStore(reducer);
+    export  default store;
+
+  ```
+
+  创建Reducers传递给store
+
+  在src创建store/reducer.js
+
+  ```
+    const dfaultState={
+        inputValue:'',
+        list:[]
+
+    }
+    export default (state=defaultState,action) =>{
+        return state;
+    }
+
+  ```
     
