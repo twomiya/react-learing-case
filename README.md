@@ -192,4 +192,21 @@ TodoItem.defaultProps={
 
   `componentWillUnmount`:当组件即将被从页面中剔除的时候才会被执行
 
- 
+
+  **15，生命周期使用场景**
+
+  >* 父组件更新渲染的时候，子组件也跟着更新(只有content发生变化的时候才更新)（性能优化）
+
+  ```
+  shouldComponentUpdate(nextProps,nextState){
+      if(nextProps.content!==this.props.content){
+          return true
+
+      }else{
+          return false
+      }
+  }
+  ```
+
+  * Ajax请求放在`componentDidMount`函数里（安装Axios）
+    

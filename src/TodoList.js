@@ -1,5 +1,6 @@
 import React,{Component,Fragment} from 'react';
 import TodoItem from './TodoItem';
+import axios from 'axios'
 import './style.css'
 class TodoList extends Component{
     constructor(props){
@@ -68,22 +69,22 @@ class TodoList extends Component{
             )
         })
     }
-    componentWillMount(){
-        console.log('componentWillMount')
-    }
-    componentDidMount(){
-        console.log('componentDidMount')
-    }
-    shouldComponentUpdate(){
-        console.log('shouldComponentUpdate')
-        return true
-    }
-    componentWillUpdate(){
-        console.log('componentWillUpdate')
-    }
-    componentDidUpdate(){
-       console.log('componentDidUpdate') 
-    }
+    // componentWillMount(){
+    //     console.log('componentWillMount')
+    // }
+    // componentDidMount(){
+    //     console.log('componentDidMount')
+    // }
+    // shouldComponentUpdate(){
+    //     console.log('shouldComponentUpdate')
+    //     return true
+    // }
+    // componentWillUpdate(){
+    //     console.log('componentWillUpdate')
+    // }
+    // componentDidUpdate(){
+    //    console.log('componentDidUpdate') 
+    // }
     render(){
         console.log('render')
         return(
