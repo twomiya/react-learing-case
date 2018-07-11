@@ -192,6 +192,7 @@ TodoItem.defaultProps={
 
   `componentWillUnmount`:当组件即将被从页面中剔除的时候才会被执行
 
+<hr>
 
   **15，生命周期使用场景**
 
@@ -209,8 +210,11 @@ TodoItem.defaultProps={
   ```
 
   * Ajax请求放在`componentDidMount`函数里（安装Axios）
+<hr>
 
-  **16,react-transition-group**
+  **16,react-transition-group([过渡效果组件](https://github.com/reactjs/react-transition-group))**
+
+  <hr>
 
   **17,Redux=Reducer+Flux**
   
