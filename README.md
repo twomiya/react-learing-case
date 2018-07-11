@@ -209,4 +209,8 @@ TodoItem.defaultProps={
   ```
 
   * Ajax请求放在`componentDidMount`函数里（安装Axios）
+
+  **16,react-transition-group**
+
+  **17,Redux=Reducer+Flux**
     

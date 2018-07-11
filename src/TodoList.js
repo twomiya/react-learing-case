@@ -1,7 +1,9 @@
 import React,{Component,Fragment} from 'react';
 import TodoItem from './TodoItem';
-import axios from 'axios'
+// import axios from 'axios';
+import { Input,Button,List } from 'antd';
 import './style.css'
+
 class TodoList extends Component{
     constructor(props){
         super(props);
@@ -29,7 +31,7 @@ class TodoList extends Component{
             list:[...prevState.list,prevState.inputValue],
             inputValue:''
         }),()=>{
-            console.log(this.ul.querySelectorAll('div').length)
+            // console.log(this.ul.querySelectorAll('div').length)
         })
         // this.setState({
         //     list:[...this.state.list,this.state.inputValue],
@@ -88,15 +90,26 @@ class TodoList extends Component{
     render(){
         console.log('render')
         return(
-            <Fragment>
-                <div>
+            <Fragment >
+                <div style={{marginTop:"20px",marginLeft:"20px"}}>
                     {/* input框 */}
-                    <input  className="input" value={this.state.inputValue}  onChange={this.handleInputChange} />
-                    <button onClick={this.handleBtnClick}>确定</button>
+                    <Input 
+                        placeholder="todo info" 
+                        style={{width:"300px",marginRight:"10px"}} 
+                        value={this.state.inputValue}  
+                        onChange={this.handleInputChange}/>
+                
+                    <Button onClick={this.handleBtnClick} type="primary">确定</Button>
                 </div>
-                <ul ref={(ul)=>this.ul=ul}>
+                <List
+                    style={{width:"500px",marginTop:"20px",marginLeft:"20px"}}
+                    bordered
+                    dataSource={this.state.list}
+                    renderItem={item => (<List.Item>{item}</List.Item>)}
+                    />
+                {/* <ul ref={(ul)=>this.ul=ul}>
                    {this.getTodoItem()}
-                </ul>
+                </ul> */}
             </Fragment>
         )
     }
