@@ -2,6 +2,8 @@ import React,{Component,Fragment} from 'react';
 // import axios from 'axios';
 import { Input,Button,List } from 'antd';
 import store from './store'
+// import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DELETE_TODO_ITEM} from './store/actionTypes' 
+import {getInputChangeAciton,getAddItemAciton,getDeleteItemAciton} from './store/actionCreator' 
 import './style.css'
 
 class TodoList extends Component{
@@ -16,10 +18,7 @@ class TodoList extends Component{
     }
     handleInputChange(e){
         const value = e.target.value
-        const action = {
-            type:'change_input_value',
-            value
-        }
+        const action = getInputChangeAciton(value)
         store.dispatch(action)
 
     }
@@ -27,16 +26,11 @@ class TodoList extends Component{
         this.setState(store.getState())
     }
     handleBtnClick(){
-        const action={
-            type:'add_todo_item'
-        }
+        const action=getAddItemAciton()
         store.dispatch(action)
     }
     handleItemDelete(index){
-        const action = {
-            type:"delete_todo_item",
-            index
-        }
+        const action =getDeleteItemAciton(index)
         store.dispatch(action)
 
     }

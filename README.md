@@ -212,7 +212,7 @@ TodoItem.defaultProps={
   * Ajax请求放在`componentDidMount`函数里（安装Axios）
 <hr>
 
-  **16,react-transition-group([过渡效果组件](https://github.com/reactjs/react-transition-group))**
+  **16,react-transition-group([过渡动画组件](https://github.com/reactjs/react-transition-group))**
 
   <hr>
 
@@ -247,4 +247,73 @@ TodoItem.defaultProps={
     }
 
   ```
-    
+
+  <hr>
+
+  **18,ActionTypes的拆分**
+
+  * 创建store/actionTypes.js
+
+  ```
+    export const   CHANGE_INPUT_VALUE= 'change_input_value'
+    export const   ADD_TODO_ITEM= 'add_todo_item'
+    export const   DELETE_TODO_ITEM= 'delete_todo_item'
+  ```
+
+  * 在todoList2.js中引用
+
+  ```
+  import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DELETE_TODO_ITEM} from './store/actionTypes' 
+
+  ```
+  * 替换之前的值（change_input_value，add_todo_item，delete_todo_item）
+
+  ```
+  ...
+    type:CHANGE_INPUT_VALUE,
+  ...
+  ```
+
+  <hr>
+
+  **19,使用actionCreator统一创建action**
+
+  * 创建store/actionCreator.js
+
+  ```
+
+    import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DELETE_TODO_ITEM} from './actionTypes';
+    export const getInputChangeAciton = (value)=>({
+        type:CHANGE_INPUT_VALUE,
+        value
+    })
+
+    export const getAddItemAciton = ()=>({
+        type:ADD_TODO_ITEM
+    })
+
+    export const getDeleteItemAciton = (index)=>({
+        type:DELETE_TODO_ITEM,
+        index
+    })
+  ```
+
+  * 在todoList2.js中引用
+
+  ```
+  import {getInputChangeAciton,getAddItemAciton,getDeleteItemAciton} from './store/actionCreator' 
+  ```
+
+  * 替换
+
+  ```
+  const action = getInputChangeAciton(value)
+  ```
+
+  ###### redux使用基本原则
+
+  *   store 是唯一的
+
+  *   只有store能改变自己的内容
+
+  *   reducer 必须是纯函数（reducer可以接收state，但是不能修改state；纯函数是指给定固定的输入，就一定会有固定的输出，而且不会有任何副作用）
