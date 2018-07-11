@@ -15,12 +15,16 @@
 
 `import registerServiceWorker from './registerServiceWorker';`
 
+<hr>
+
 **3，react16 有占位符**
 
 `Fragment` 可以解决render函数外层的div的问题
 `import {Fragment} from 'react'`
 ...
 `<Fragment></Fragment>`
+
+<hr>
 
 **4，定义数据(state负责存储数据)**
 
@@ -38,6 +42,8 @@ constructor(props){
 
 ```
 
+<hr>
+
 **5，用setState改变state数据**
 
 ```
@@ -46,11 +52,17 @@ this.setState({
 })
 ```
 
+<hr>
+
 **6，immutable state不允许我们做任何改变**
+
+<hr>
 
 **7，不自动转义(但是容易被攻击)**
 
 `dangerouslySetInnerHTML={{_html:item}}`
+
+<hr>
 
 **8，htmlFor**
 
@@ -58,6 +70,8 @@ this.setState({
 <label htmlFor="area"></label>
 <input id="area"/>
 ```
+
+<hr>
 
 **9，父组件向子组件传值（属性传值）**
 
@@ -83,6 +97,8 @@ this.props.deleteItem(this.props.index)
 
 ``` 
 
+<hr>
+
 **10，数据验证propTypes**
 
 ```
@@ -104,10 +120,14 @@ TodoItem.defaultProps={
 
 ```
 
+<hr>
+
 **11，prop state render的关系**
 
 * 当组件state或prop发生变化时，render函数就会重新运行
 * 当父组件的render函数运行时，它的子组件都将被重新运行一次
+
+<hr>
 
 **12，react的虚拟DOM（同层比对）**
 
@@ -134,6 +154,9 @@ TodoItem.defaultProps={
 
 ##### key提高了虚拟对比的性能，所以不能用index设置key值
 
+
+<hr>
+
 **13，react中ref的使用**
 
 >`ref` 属性来帮助我们获取已经挂载的元素的 DOM 节点
@@ -145,6 +168,8 @@ TodoItem.defaultProps={
 >特别是要避免用 ref 来做 React.js 本来就可以帮助你做到的页面自动更新的操作和事件监听。多余的 DOM 操作其实是代码里面的“噪音”，不利于
 
 我们理解和维护。
+
+<hr>
 
 **14，生命周期**
 
