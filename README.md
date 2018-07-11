@@ -183,11 +183,15 @@ TodoItem.defaultProps={
 
   `shouldComponentUpdate`:组件被更新之前，会自动被执行（必须有布尔类型的返回值，true：被更新，false：不会被更新）
 
-  `componentWillUpdate`:组件被更新之前，会自动被执行，它在`shouldComponentUpdate`之后被执行，如果`shouldComponentUpdate`返回true才执行，返回false就不会被执行
+  `componentWillUpdate`:组件被更新之前，会自动被执行，它在`shouldComponentUpdate`之后被执行，
+  
+  如果`shouldComponentUpdate`返回true才执行，返回false就不会被执行
 
   `componentDidUpdate`:组件更新完成之后，会自动被执行
 
-  `componentWillReceiveProps`:一个组件要从父组件接受参数；只要父组件的render函数重新被执行了，子组件这个生命周期函数就会被执行（如果这个组件第一次存在于父组件中，不会被执行，如果这个组件之前已经存在于父组件中，才会执行）
+  `componentWillReceiveProps`:一个组件要从父组件接受参数；只要父组件的render函数重新被执行了，子组件这个生命周期函数就会被执行
+  
+  （如果这个组件第一次存在于父组件中，不会被执行，如果这个组件之前已经存在于父组件中，才会执行）
 
   `componentWillUnmount`:当组件即将被从页面中剔除的时候才会被执行
 
