@@ -1,9 +1,9 @@
-import React,{Component,Fragment} from 'react';
+import React,{Component} from 'react';
 // import axios from 'axios';
-import { Input,Button,List } from 'antd';
 import store from './store'
 // import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DELETE_TODO_ITEM} from './store/actionTypes' 
 import {getInputChangeAciton,getAddItemAciton,getDeleteItemAciton} from './store/actionCreator' 
+import TodoListUI from './TodoListUI'
 import './style.css'
 
 class TodoList extends Component{
@@ -13,6 +13,7 @@ class TodoList extends Component{
         this.handleInputChange = this.handleInputChange.bind(this)
         this.handleStoreChange = this.handleStoreChange.bind(this)
         this.handleBtnClick = this.handleBtnClick.bind(this)
+        this.handleItemDelete = this.handleItemDelete.bind(this)
         store.subscribe(this.handleStoreChange)
 
     }
@@ -24,6 +25,8 @@ class TodoList extends Component{
     }
     handleStoreChange(){
         this.setState(store.getState())
+        console.log(this.state)
+
     }
     handleBtnClick(){
         const action=getAddItemAciton()
@@ -37,24 +40,29 @@ class TodoList extends Component{
     render(){
         console.log('render')
         return(
-            <Fragment >
-                <div style={{marginTop:"20px",marginLeft:"20px"}}>
-                    {/* input框 */}
-                    <Input 
-                        placeholder="todo info" 
-                        style={{width:"300px",marginRight:"10px"}} 
-                        value={this.state.inputValue}  
-                        onChange={this.handleInputChange}/>
+            <TodoListUI 
+            inputValue={this.state.inputValue}
+            handleInputChange={this.handleInputChange}
+            handleBtnClick={this.handleBtnClick}
+            list={this.state.list}/>
+            // <Fragment >
+            //     <div style={{marginTop:"20px",marginLeft:"20px"}}>
+            //         {/* input框 */}
+            //         <Input 
+            //             placeholder="todo info" 
+            //             style={{width:"300px",marginRight:"10px"}} 
+            //             value={this.state.inputValue}  
+            //             onChange={this.handleInputChange}/>
                 
-                    <Button onClick={this.handleBtnClick} type="primary">确定</Button>
-                </div>
-                <List
-                    style={{width:"500px",marginTop:"20px",marginLeft:"20px"}}
-                    bordered
-                    dataSource={this.state.list}
-                    renderItem={(item,index) => (<List.Item onClick={this.handleItemDelete.bind(this,index)}>{item}</List.Item>)}
-                    />
-            </Fragment>
+            //         <Button onClick={this.handleBtnClick} type="primary">确定</Button>
+            //     </div>
+            //     <List
+            //         style={{width:"500px",marginTop:"20px",marginLeft:"20px"}}
+            //         bordered
+            //         dataSource={this.state.list}
+            //         renderItem={(item,index) => (<List.Item onClick={this.handleItemDelete.bind(this,index)}>{item}</List.Item>)}
+            //         />
+            // </Fragment>
         )
     }
 }

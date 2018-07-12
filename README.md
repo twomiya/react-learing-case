@@ -319,3 +319,7 @@ TodoItem.defaultProps={
   *   只有store能改变自己的内容
 
   *   reducer 必须是纯函数（reducer可以接收state，但是不能修改state；纯函数是指给定固定的输入，就一定会有固定的输出，而且不会有任何副作用）
+
+  **20，无状态组件**
+
+  无状态组件：这个组件只有render函数的组件叫做无状态组件
