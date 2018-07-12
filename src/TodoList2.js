@@ -44,7 +44,8 @@ class TodoList extends Component{
             inputValue={this.state.inputValue}
             handleInputChange={this.handleInputChange}
             handleBtnClick={this.handleBtnClick}
-            list={this.state.list}/>
+            list={this.state.list}
+            handleItemDelete={this.handleItemDelete}/>
             // <Fragment >
             //     <div style={{marginTop:"20px",marginLeft:"20px"}}>
             //         {/* input框 */}
