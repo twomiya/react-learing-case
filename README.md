@@ -323,3 +323,55 @@ TodoItem.defaultProps={
   **20，无状态组件**
 
   无状态组件：这个组件只有render函数的组件叫做无状态组件
+
+  ```
+  // 无状态组件
+
+const TodoListUI = (props)=>{
+    return(
+        <Fragment >
+        <div style={{marginTop:"20px",marginLeft:"20px"}}>
+            {/* input框 */}
+            <Input 
+                placeholder="todo info" 
+                style={{width:"300px",marginRight:"10px"}} 
+                value={props.inputValue}  
+                onChange={props.handleInputChange}/>
+        
+            <Button onClick={props.handleBtnClick} type="primary">确定</Button>
+        </div>
+        <List
+            style={{width:"500px",marginTop:"20px",marginLeft:"20px"}}
+            bordered
+            dataSource={props.list}
+            renderItem={(item,index) => (<List.Item onClick={(index)=>{props.handleItemDelete(index)}}>{item}</List.Item>)}
+            />
+    </Fragment>
+    )
+}
+  ```
+
+  **21，redux-thunk**
+
+  * redux 的中间件安装:`yarn add redux-thunk`
+
+  * 在store/index.js里导入和引用
+
+  ```
+  import {createStore,applyMiddleware} from 'redux';
+  import thunk from 'redux-thunk';
+  ``
+  * [配置](https://github.com/zalmoxisus/redux-devtools-extension)
+
+  ```
+    const composeEnhancers =
+        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
+        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+    }) : compose;
+
+    const enhancer = composeEnhancers(
+        applyMiddleware(thunk),
+    );
+    const store = createStore(reducer, enhancer);
+
+  ```

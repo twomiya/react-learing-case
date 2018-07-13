@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import store from './store'
 // import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DELETE_TODO_ITEM} from './store/actionTypes' 
-import {getInputChangeAciton,getAddItemAciton,getDeleteItemAciton} from './store/actionCreator' 
+import {getInputChangeAciton,getAddItemAciton,getDeleteItemAciton,getInitDataAction} from './store/actionCreator' 
 import TodoListUI from './TodoListUI'
 import './style.css'
 
@@ -25,7 +25,6 @@ class TodoList extends Component{
     }
     handleStoreChange(){
         this.setState(store.getState())
-        console.log(this.state)
 
     }
     handleBtnClick(){
@@ -37,8 +36,16 @@ class TodoList extends Component{
         store.dispatch(action)
 
     }
+    componentDidMount(){
+        axios.get('http://localhost:3003/list').then((res)=>{
+            console.log(res)
+            const data = res.data
+            const action = getInitDataAction(data)
+            store.dispatch(action)
+
+        })
+    }
     render(){
-        console.log('render')
         return(
             <TodoListUI 
             inputValue={this.state.inputValue}
