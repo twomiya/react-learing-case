@@ -465,6 +465,28 @@ const TodoListUI = (props)=>{
   ```
   import {connect} from 'react-redux';
   ...
+  render(){
+        const {value,handleInputChange,list,handleClick,handleDelete} = this.props;
+        return(
+            <div>
+                <div>
+                    <input value={value}
+                    onChange={handleInputChange}/>
+                    <button onClick={handleClick}>确定</button>
+                </div>
+                <ul>
+                    {list.map((item,index)=>{
+                        return(
+                            <li 
+                            key={index}
+                            onClick={handleDelete}>{item}</li>
+                        )
+                    })}
+                </ul>
+            </div>
+        )
+    }
+    ...
 
   //连接规则(TodoList与store连接)store.state
   const mapStateToProps = (state)=>{
