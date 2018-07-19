@@ -358,9 +358,10 @@ const TodoListUI = (props)=>{
   * 在store/index.js里导入和引用
 
   ```
-  import {createStore,applyMiddleware} from 'redux';
+  import {createStore,applyMiddleware,compose} from 'redux';
   import thunk from 'redux-thunk';
   ``
+
   * [配置](https://github.com/zalmoxisus/redux-devtools-extension)
 
   ```
