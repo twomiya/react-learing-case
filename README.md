@@ -353,7 +353,7 @@ const TodoListUI = (props)=>{
 
   **21，redux-thunk**
 
-  * redux 的中间件安装:`yarn add redux-thunk`
+  * redux 的中间件redux-thunk安装:`yarn add redux-thunk`
 
   * 在store/index.js里导入和引用
 
@@ -381,7 +381,7 @@ const TodoListUI = (props)=>{
 
   **22，redux-saga**
 
-  * redux 的中间件安装:`yarn add redux-saga`
+  * redux 的中间件redux-saga安装:`yarn add redux-saga`
 
   * 在store/index.js里导入和引用
 
@@ -440,3 +440,51 @@ const TodoListUI = (props)=>{
   })
   ```
 
+**23，react-redux**
+
+  * react-redux的安装:`yarn add react-redux`
+
+  * 在index.js引入react-redux:
+
+  ```
+  import {Provider} from 'react-redux';
+  import store from './store'
+  const App =(
+    <Provider store={store}>
+      <TodoList/>
+    </Provider>
+  )
+  ReactDom.render(App,document.getElementById('root'));
+  ```
+
+  *Provider把store提供给了Provider里面所有的内部组件（比如：TodoList）*
+
+
+  * TodoList如何获取store，在TodoList.js中
+
+  ```
+  import {connect} from 'react-redux';
+  ...
+
+  //连接规则(TodoList与store连接)store.state
+  const mapStateToProps = (state)=>{
+    return {
+      value:state.value
+
+    }
+  }
+  //store.dispatch,props
+  const mapDispatchToProps = (dispatch)=>{
+    return{
+      changeValue(e){
+        const action ={
+          type:'change',
+          value:e.target.value
+        }
+        dispatch(action)
+      }
+
+    }
+  }
+  export default connect(mapStateToProps,mapDispatchToProps)(TodoList);
+  ```
