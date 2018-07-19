@@ -381,5 +381,62 @@ const TodoListUI = (props)=>{
 
   **22，redux-saga**
 
-  
+  * redux 的中间件安装:`yarn add redux-saga`
+
+  * 在store/index.js里导入和引用
+
+  ```
+  import {createStore,applyMiddleware,compose} from 'redux';
+  import createSagaMiddleware from 'redux-saga';
+  import TodoSagas from './sagas';
+
+
+  ```
+
+  ```
+  const sagaMiddleware = createSagaMiddleware();
+  const enhancer = composeEnhancers(
+    applyMiddleware(sagaMiddleware),
+    );
+  sagaMiddleware.run(TodoSagas);
+
+  ```
+
+  * sagas.js
+
+  ```
+  import {takeEvery,put} from 'redux-saga/effects';
+  import {GET_INIT_LIST} from './actionTypes'
+  import { getInitDataAction } from './actionCreator';
+  import axios from 'axios';
+
+
+  function* getLists(){
+      const res = yield axios.get('http://localhost:3003/list');
+      const action = getInitDataAction(res.data);
+      yield put(action)
+
+  }
+
+  function* mySaga() {
+      yield takeEvery(GET_INIT_LIST, getLists);
+    }
+
+    
+  export default mySaga;
+  ```
+
+  * actionType.js
+
+  ```
+  export const  GET_INIT_LIST="get_init_list"
+  ```
+  * actionCreator.js
+
+  ```
+  export const getInitList = (data)=>({
+    type:GET_INIT_LIST,
+    data
+  })
+  ```
 

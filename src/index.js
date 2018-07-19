@@ -1,4 +1,4 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TodoList2 from './TodoList2';
-ReactDOM.render(<TodoList2 />, document.getElementById('root'));
+import TodoList3 from './TodoList3';
+ReactDOM.render(<TodoList3 />, document.getElementById('root'));
