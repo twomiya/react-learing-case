@@ -360,7 +360,8 @@ const TodoListUI = (props)=>{
   ```
   import {createStore,applyMiddleware,compose} from 'redux';
   import thunk from 'redux-thunk';
-  ``
+
+  ```
 
   * [配置](https://github.com/zalmoxisus/redux-devtools-extension)
 
@@ -376,3 +377,9 @@ const TodoListUI = (props)=>{
     const store = createStore(reducer, enhancer);
 
   ```
+  **中间件解决异步代码拆分，可以是action返回一个函数**
+
+  **22，redux-saga**
+
+  
+
