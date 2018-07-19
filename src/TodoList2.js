@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import store from './store'
 // import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DELETE_TODO_ITEM} from './store/actionTypes' 
-import {getInputChangeAciton,getAddItemAciton,getDeleteItemAciton,getInitDataAction} from './store/actionCreator' 
+import {getInputChangeAciton,getAddItemAciton,getDeleteItemAciton,getLodoList} from './store/actionCreator' 
 import TodoListUI from './TodoListUI'
 import './style.css'
 
@@ -37,13 +37,15 @@ class TodoList extends Component{
 
     }
     componentDidMount(){
-        axios.get('http://localhost:3003/list').then((res)=>{
-            console.log(res)
-            const data = res.data
-            const action = getInitDataAction(data)
-            store.dispatch(action)
+        // axios.get('http://localhost:3003/list').then((res)=>{
+        //     console.log(res)
+        //     const data = res.data
+        //     const action = getInitDataAction(data)
+        //     store.dispatch(action)
 
-        })
+        // })
+        const action = getLodoList();
+        store.dispatch(action)
     }
     render(){
         return(
