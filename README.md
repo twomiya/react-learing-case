@@ -60,7 +60,7 @@ this.setState({
 
 **7，不自动转义(但是容易被攻击)**
 
-`dangerouslySetInnerHTML={{_html:item}}`
+`dangerouslySetInnerHTML={{__html:item}}`
 
 <hr>
 
